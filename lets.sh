@@ -14,10 +14,11 @@ case "$1" in
     then
      cp "./.env.example" "./.env"
     fi
-    docker-compose up -d
-    docker-compose exec php php artisan key:generate
-    docker-compose exec php php artisan migrate
+    composer install
     npm install
+    docker-compose up -d && \
+    docker-compose exec php php artisan key:generate && \
+    docker-compose exec php php artisan migrate
   ;;
 
   sleep)
