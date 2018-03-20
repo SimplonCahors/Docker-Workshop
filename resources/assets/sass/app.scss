@@ -1,0 +1,57 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+html, body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  color: #636b6f;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+h1 {
+  text-align: center;
+}
+
+.list {
+  margin-top: 3rem;
+
+  .article {
+    margin-bottom: 1rem;
+  }
+}
+
+.article {
+
+  max-width: 30rem;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  img {
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 0.3rem;
+  }
+
+}
+
