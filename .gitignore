@@ -10,3 +10,6 @@ yarn-error.log
 # Environment
 .env
 !.env.example
+
+# Mysql Data
+docker/mysql-data
