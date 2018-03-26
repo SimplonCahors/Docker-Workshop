@@ -10,6 +10,7 @@
 
 ## Install
 
+    run docker
     ./lets.sh install
 
 ## Development
@@ -18,6 +19,7 @@
 
 Start docker :
 
+    run docker
     ./lets.sh dev
     
 Stop docker :
