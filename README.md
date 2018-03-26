@@ -8,7 +8,7 @@
 * GIT (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 
-## Build (nothing to build beacause we are using containers)
+## Build (nothing to build because we are using containers)
 
     docker-compose build
 
@@ -26,10 +26,6 @@ Remove all docker containers :
 
     docker rm $(docker ps -a -q)
 
-Stop all docker images :
-
-    docker stop $(docker ps -a -q)
-
 Remove all docker images :
 
-    docker rmi $(docker ps -a -q)
+    docker rmi $(docker images -q)
