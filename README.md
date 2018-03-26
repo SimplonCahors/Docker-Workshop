@@ -8,31 +8,28 @@
 * GIT (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 
-## Install
+## Build (nothing to build beacause we are using containers)
 
-    run docker
-    ./lets.sh install
+    docker-compose build
 
-## Development
+## Run
 
-### Docker
+    docker-compose up
 
-Start docker :
+## Others docker commands
 
-    run docker
-    ./lets.sh dev
-    
-Stop docker :
+Stop all docker containers :
 
-    ./lets.sh sleep
+    docker stop $(docker ps -a -q)
 
-Application : http://localhost:8010/  
-PHPMyadmin : http://localhost:8081/ (username : dev / password : dev)
-    
-### Build assets
+Remove all docker containers :
 
-    npm run dev|prod|watch|watch-poll
+    docker rm $(docker ps -a -q)
 
-## Laravel artisan
+Stop all docker images :
 
-    ./lets.sh artisan [ARTISAN ARGUMENTS]
+    docker stop $(docker ps -a -q)
+
+Remove all docker images :
+
+    docker rmi $(docker ps -a -q)
