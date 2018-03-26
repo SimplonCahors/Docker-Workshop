@@ -7,3 +7,6 @@ yarn-error.log
 .*.swp
 .DS_Store
 
+# Environment
+.env
+!.env.example

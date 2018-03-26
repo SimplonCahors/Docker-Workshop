@@ -7,25 +7,39 @@
 * NPM & NodeJS (https://docs.npmjs.com/getting-started/installing-node)
 * GIT (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
+Docker should be running.
 
-## Build (nothing to build because we are using containers)
+## Build docker
 
-    docker-compose build
+    ./lets.sh build-docker
 
-## Run
+## Init laravel project
 
-    docker-compose up
+    ./lets.sh init
 
-## Others docker commands
+## Development
 
-Stop all docker containers :
+Run build (composer / assets)
 
-    docker stop $(docker ps -a -q)
+    ./lets.sh build
 
-Remove all docker containers :
+Start devloppment :
 
-    docker rm $(docker ps -a -q)
+    ./lets.sh dev
 
-Remove all docker images :
+Stop devloppment :
 
-    docker rmi $(docker images -q)
+    ./lets.sh sleep
+
+
+Application : http://localhost:8010/  
+PHPMyadmin : http://localhost:8081/ (username : dev / password : dev)
+
+
+## Build assets
+
+    npm run dev|prod|watch|watch-poll
+
+## Laravel artisan
+
+    ./lets.sh artisan [ARTISAN ARGUMENTS]
