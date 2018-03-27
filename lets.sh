@@ -35,14 +35,15 @@ case "$1" in
       cp "./app/.env.example" "./app/.env"
     fi
 
-    docker-compose up -d && \
-    docker-compose exec php php artisan key:generate && \
-    docker-compose exec php php artisan migrate
+    docker-compose up -d
 
     cd app
     composer install
     npm install
-    cd -
+    cd -       
+    
+    docker-compose exec php php artisan key:generate && \
+    docker-compose exec php php artisan migrate
   ;;
 
   dev)
