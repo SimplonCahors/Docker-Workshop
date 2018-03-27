@@ -29,9 +29,15 @@ case "$1" in
       echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
       exit;
     fi
+
+    if [ ! -f "./app/.env" ]
+    then
+      cp "./app/.env.example" "./app/.env"
+    fi
+
     docker-compose up -d && \
-    docker-compose exec simplon_php php artisan key:generate && \
-    docker-compose exec simplon_php php artisan migrate
+    docker-compose exec php php artisan key:generate && \
+    docker-compose exec php php artisan migrate
 
     cd app
     composer install
@@ -67,7 +73,7 @@ case "$1" in
     for ARG in "${@:2}"; do
         ARTISAN_ARGS="$ARTISAN_ARGS $ARG"
     done
-    docker-compose exec simplon_php php artisan $ARTISAN_ARGS
+    docker-compose exec php php artisan $ARTISAN_ARGS
   ;;
 
   *)
