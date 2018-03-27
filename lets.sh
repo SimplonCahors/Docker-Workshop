@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 # Colors
 normal=$'\e[0m'
 bold=$(tput bold)
@@ -19,11 +17,32 @@ case "$1" in
     then
      cp "./.env.example" "./.env"
     fi
-    docker-compose build
+    docker-compose build --no-cache
     echo -e "${green}Docker build done!${normal}"
   ;;
 
+  dev)
+    if [ ! -f "./.env" ]
+    then
+      echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
+      exit;
+    fi
+    docker-compose up -d
+  ;;
+
   init)
+    CONTAINER="simplon_php"
+    RUNNING=$(docker inspect --format="{{.State.Running}}" $CONTAINER 2> /dev/null)
+    if [ $? -eq 1 ]; then
+      echo "You need to run \"${red}./dev.sh${normal}\" first." 1>&2
+      exit;
+    fi
+    if [ "$RUNNING" == "false" ];
+      then
+      echo "You need to run \"${red}./lets.sh dev${normal}\" first." 1>&2
+      exit;
+    fi
+
     if [ ! -f "./.env" ]
     then
       echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
@@ -35,26 +54,16 @@ case "$1" in
       cp "./app/.env.example" "./app/.env"
     fi
 
-    docker-compose up -d
+    chmod -R 777 app/storage
 
     cd app
     composer install
-    npm install
-    cd -       
-    
+    cd -
+
     docker-compose exec php php artisan key:generate && \
     docker-compose exec php php artisan migrate
   ;;
 
-  dev)
-    if [ ! -f "./.env" ]
-    then
-      echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
-      exit;
-    fi
-    docker-compose up -d
-  ;;
-  
   build)
     cd app
     composer install

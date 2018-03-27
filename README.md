@@ -15,13 +15,10 @@ Docker should be running.
 
 ## Init laravel project
 
+    ./lets.sh dev
     ./lets.sh init
 
 ## Development
-
-Run build (composer / assets)
-
-    ./lets.sh build
 
 Start devloppment :
 
@@ -30,6 +27,10 @@ Start devloppment :
 Stop devloppment :
 
     ./lets.sh sleep
+
+Run build (composer / assets)
+
+    ./lets.sh build
 
 
 Application : http://localhost:8010/  
