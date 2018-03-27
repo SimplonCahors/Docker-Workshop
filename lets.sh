@@ -24,7 +24,7 @@ case "$1" in
   ;;
 
   init)
-    if [ ! -f "./env" ]
+    if [ ! -f "./.env" ]
     then
       echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
       exit;
@@ -40,7 +40,7 @@ case "$1" in
   ;;
 
   dev)
-    if [ ! -f "./env" ]
+    if [ ! -f "./.env" ]
     then
       echo "You need to run \"${red}./lets.sh build-docker${normal}\" first." 1>&2
       exit;
