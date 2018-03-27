@@ -30,8 +30,8 @@ case "$1" in
       exit;
     fi
     docker-compose up -d && \
-    docker-compose exec php php artisan key:generate && \
-    docker-compose exec php php artisan migrate
+    docker-compose exec simplon_php php artisan key:generate && \
+    docker-compose exec simplon_php php artisan migrate
 
     cd app
     composer install
@@ -67,7 +67,7 @@ case "$1" in
     for ARG in "${@:2}"; do
         ARTISAN_ARGS="$ARTISAN_ARGS $ARG"
     done
-    docker-compose exec php php artisan $ARTISAN_ARGS
+    docker-compose exec simplon_php php artisan $ARTISAN_ARGS
   ;;
 
   *)
