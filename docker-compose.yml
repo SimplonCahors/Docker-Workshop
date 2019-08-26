@@ -11,7 +11,7 @@ services:
         depends_on:
             - php
     php:
-        image: nanoninja/php-fpm:7.2
+        image: php:7.2-fpm
         restart: always
         volumes:
             - "./docker/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
