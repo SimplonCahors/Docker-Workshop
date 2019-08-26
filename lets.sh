@@ -56,21 +56,9 @@ case "$1" in
 
     chmod -R 777 app/storage
 
-    cd app
-    composer install
-    cd -
-
+    docker-compose exec php composer install
     docker-compose exec php php artisan key:generate && \
     docker-compose exec php php artisan migrate
-  ;;
-
-  build)
-    cd app
-    composer install
-    npm install
-    npm run dev
-    cd -
-    echo -e "${green}Done!${normal}"
   ;;
 
   sleep)
